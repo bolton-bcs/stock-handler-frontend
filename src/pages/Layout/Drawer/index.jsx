@@ -163,7 +163,7 @@ export default function MiniDrawer() {
         <Box sx={{ display: 'flex' }} >
             <CssBaseline />
             <AppBar position="fixed" open={open}>
-                <Toolbar style={{backgroundColor: '#27ae60'}}>
+                <Toolbar style={{backgroundColor: '#6F1E51'}}>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }} >
                         <IconButton
                             color="inherit"
@@ -178,13 +178,13 @@ export default function MiniDrawer() {
                             <MenuIcon />
                         </IconButton>
                         <Typography variant="h5" noWrap component="div">
-                            Up Keep
+                            Stock Handler
                         </Typography>
                     </Box>
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="Remy Sharp" src="https://avatars.githubusercontent.com/u/111392185?s=400&u=6e9302419618e1f039b76bfc14e1086c1d03956c&v=4" />
+                                <Avatar alt="Remy Sharp" src="https://avatars.githubusercontent.com/u/73925041?v=4" />
                             </IconButton>
                         </Tooltip>
                         <Menu
