@@ -23,9 +23,7 @@
     "react-router": "^6.15.0",
     "react-router-dom": "^6.15.0",
     "react-scripts": "^5.0.1",
-    "web-vitals": "^2.1.4",
-    "@babel/core": "^7.22.10",
-    "@babel/eslint-parser": "^7.22.10"
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
