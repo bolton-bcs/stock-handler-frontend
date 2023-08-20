@@ -368,11 +368,11 @@ class Products extends Component {
                                 {
                                     this.state.data.map((row) => (
                                         <TableRow>
-                                            <TableCell align="left">{row.id}</TableCell>
-                                            <TableCell align="left">{row.name}</TableCell>
-                                            <TableCell align="left">{row.sup_id}</TableCell>
-                                            <TableCell align="left">{row.qty}</TableCell>
-                                            <TableCell align="left">{row.unitPrice}</TableCell>
+                                            <TableCell align="left">{row.product_id}</TableCell>
+                                            <TableCell align="left">{row.item_name}</TableCell>
+                                            <TableCell align="left">{row.supplier_id}</TableCell>
+                                            <TableCell align="left">{row.quantity}</TableCell>
+                                            <TableCell align="left">{row.unit_price}</TableCell>
                                             <TableCell align="left">{row.status}</TableCell>
                                             <TableCell align="left">
                                                 <Tooltip title="Edit">
