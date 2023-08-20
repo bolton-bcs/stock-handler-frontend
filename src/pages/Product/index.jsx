@@ -16,17 +16,18 @@ import Tooltip from '@mui/material/Tooltip';
 import EditIcon from '@mui/icons-material/Edit';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import ProductService from "../../services/ProductService";
 
 class Products extends Component {
     constructor(props) {
         super(props);
         this.state = {
             formData: {
-                code: '',
-                name: '',
-                supId: '',
-                qty: '',
-                unitPrice: '',
+                product_id: '',
+                item_name: '',
+                supplier_id: '',
+                quantity: '',
+                unit_price: '',
                 status: ''
             },
             alert: false,
@@ -35,19 +36,19 @@ class Products extends Component {
 
             data: [
                 {
-                    id: "P001",
-                    name: "Box",
-                    sup_id: "S001",
-                    qty: '12',
-                    unitPrice: '25000',
+                    product_id: "P001",
+                    item_name: "Box",
+                    supplier_id: "S001",
+                    quantity: '12',
+                    unit_price: '25000',
                     status: 'Shipped'
                 },
                 {
-                    id: "P002",
-                    name: "Bike",
-                    sup_id: "S002",
-                    qty: '14',
-                    unitPrice: '10000',
+                    product_id: "P002",
+                    item_name: "Bike",
+                    supplier_id: "S002",
+                    quantity: '14',
+                    unit_price: '10000',
                     status: 'Shipped'
                 }
             ],
@@ -74,11 +75,11 @@ class Products extends Component {
             btnLabel: 'update',
             btnColor: 'secondary',
             formData: {
-                id: data.id,
-                name: data.name,
-                sup_id: data.sup_id,
-                qty: data.qty,
-                unitPrice: data.unitPrice,
+                product_id: data.product_id,
+                item_name: data.item_name,
+                supplier_id: data.supplier_id,
+                quantity: data.quantity,
+                unit_price: data.unit_price,
                 status: data.status
             }
         });
@@ -89,11 +90,11 @@ class Products extends Component {
             btnLabel: 'save',
             btnColor: 'primary',
             formData: {
-                id: '',
-                name: '',
-                sup_id: '',
-                qty: '',
-                unitPrice: '',
+                product_id: '',
+                item_name: '',
+                supplier_id: '',
+                quantity: '',
+                unit_price: '',
                 status: ''
             },
         });
@@ -104,7 +105,28 @@ class Products extends Component {
         let formData = this.state.formData;
 
         if (this.state.btnLabel === "save") {
+            if (this.state.btnLabel === "save") {
+                let res = await ProductService.postProduct(formData);
+
+                if(res.status === 200) {
+                    console.log('sucess')
+                    this.setState({
+                        alert: true,
+                        message: 'added successfully!',
+                        severity: 'success'
+                    });
+                    // this.loadData();
+                } else {
+                    console.log('err')
+                    this.setState({
+                        alert: true,
+                        message: 'added not successfully!',
+                        severity: 'error'
+                    });
+                }
+            }
             console.log('save');
+
         } else {
             console.log('update');
         }
@@ -228,10 +250,10 @@ class Products extends Component {
                                 variant="outlined"
                                 size="small"
                                 style={{ width: '100%' }}
-                                value={this.state.formData.id}
+                                value={this.state.formData.product_id}
                                 onChange={(e) => {
                                     let formData = this.state.formData
-                                    formData.id = e.target.value
+                                    formData.product_id = e.target.value
                                     this.setState({ formData })
                                 }}
                                 validators={['required']}
@@ -245,10 +267,10 @@ class Products extends Component {
                                 variant="outlined"
                                 size="small"
                                 style={{ width: '100%' }}
-                                value={this.state.formData.name}
+                                value={this.state.formData.item_name}
                                 onChange={(e) => {
                                     let formData = this.state.formData
-                                    formData.name = e.target.value
+                                    formData.item_name = e.target.value
                                     this.setState({ formData })
                                 }}
                                 validators={['required']}
@@ -262,10 +284,10 @@ class Products extends Component {
                                 variant="outlined"
                                 size="small"
                                 style={{ width: '100%' }}
-                                value={this.state.formData.sup_id}
+                                value={this.state.formData.supplier_id}
                                 onChange={(e) => {
                                     let formData = this.state.formData
-                                    formData.sup_id = e.target.value
+                                    formData.supplier_id = e.target.value
                                     this.setState({ formData })
                                 }}
                                 validators={['required']}
@@ -279,10 +301,10 @@ class Products extends Component {
                                 variant="outlined"
                                 size="small"
                                 style={{ width: '100%' }}
-                                value={this.state.formData.qty}
+                                value={this.state.formData.quantity}
                                 onChange={(e) => {
                                     let formData = this.state.formData
-                                    formData.qty = e.target.value
+                                    formData.quantity = e.target.value
                                     this.setState({ formData })
                                 }}
                                 validators={['required']}
@@ -296,10 +318,10 @@ class Products extends Component {
                                 variant="outlined"
                                 size="small"
                                 style={{ width: '100%' }}
-                                value={this.state.formData.unitPrice}
+                                value={this.state.formData.unit_price}
                                 onChange={(e) => {
                                     let formData = this.state.formData
-                                    formData.unitPrice = e.target.value
+                                    formData.unit_price = e.target.value
                                     this.setState({ formData })
                                 }}
                                 validators={['required']}
